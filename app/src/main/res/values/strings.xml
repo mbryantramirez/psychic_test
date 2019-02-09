@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">Psychic Test</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="choose_a_theme_textview">Choose a theme</string>
+    <string name="main_button_text">pick theme</string>
+    <string name="your_successful_guess_rate_textview">Your successful guess rate: </string>
+    <string name="guess_right">You guessed right!</string>
+    <string name="guess_wrong">You guessed wrong!</string>
+
+
+    <string-array name="choices_array">
+        <item>sweets</item>
+        <item>popcorn</item>
+        <item>funhouse</item>
+    </string-array>
+
+
+</resources>
