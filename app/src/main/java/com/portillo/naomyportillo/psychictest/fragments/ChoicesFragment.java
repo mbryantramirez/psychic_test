@@ -124,9 +124,8 @@ public class ChoicesFragment extends Fragment {
             Log.d(".choicesfrag - numm", "Check entry " + userGuess + " " + android);
             Log.d(".choicesfrag - numm", "Check attempts " + success + " " + fail);
 
-
             guessDataBaseHelper.addGuess(new GuessModel(success, fail));
-            startEndResultFragment(userGuess, android, getString(R.string.guess_wrong));
+            startEndResultFragment(userGuess, android, getString(R.string.guess_right));
         }
 
         if (userGuess != android) {
@@ -137,10 +136,7 @@ public class ChoicesFragment extends Fragment {
 
             guessDataBaseHelper.addGuess(new GuessModel(success, fail));
             startEndResultFragment(userGuess, android, getString(R.string.guess_wrong));
-
         }
-
-
     }
 
     private void startEndResultFragment(int userGuess, int android, String result) {

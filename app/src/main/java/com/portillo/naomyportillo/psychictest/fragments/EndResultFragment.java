@@ -68,8 +68,8 @@ public class EndResultFragment extends Fragment {
 
     private void getRatio() {
 
-        int successfulAttempts = 0;
-        int failedAttempts = 0;
+        double successfulAttempts = 0;
+        double failedAttempts = 0;
 
         List<GuessModel> databaseGuesses = guessDataBaseHelper.getGuessList();
 
@@ -77,13 +77,20 @@ public class EndResultFragment extends Fragment {
 
         int guesses = databaseGuesses.size();
         for (int i = 0; i < databaseGuesses.size(); i++) {
-            if (databaseGuesses.get(i).getSuccess() == 0) {
+            if (databaseGuesses.get(i).getSuccess() == 1) {
                 successfulAttempts++;
-            } else {
+                Log.d(".EndResultFrag _ numm", "successAttempts in loop: " + String.valueOf(successfulAttempts));
+
+            }
+            if (databaseGuesses.get(i).getFails() == 1){
                 failedAttempts++;
             }
         }
         rate = (((successfulAttempts) / guesses) * 100);
+        Log.d(".EndResultFrag _ numm", "successAttempts out loop: " + String.valueOf(successfulAttempts));
+        Log.d(".EndResultFrag _ numm", "rate: " + String.valueOf(rate));
+        Log.d(".EndResultFrag _ numm", "fail attempts: " + String.valueOf(failedAttempts));
+
     }
 
     @Override
@@ -92,11 +99,13 @@ public class EndResultFragment extends Fragment {
 
         rootView = inflater.inflate(R.layout.fragment_end_result, container, false);
 
-        androidguessView = rootView.findViewById(R.id.app_guess_imageview);
-        userGuessView = rootView.findViewById(R.id.user_guess_imageview);
-        resultTextview = rootView.findViewById(R.id.guess_result_textView);
-        ratiotextView = rootView.findViewById(R.id.guess_rate_textview);
+        findViews();
+        setViews();
 
+        return rootView;
+    }
+
+    private void setViews() {
         androidguessView.setImageResource(guessImage);
         userGuessView.setImageResource(userguessImage);
         resultTextview.setText(userResult);
@@ -104,7 +113,15 @@ public class EndResultFragment extends Fragment {
         String userRate = getString(R.string.your_successful_guess_rate_textview) + rate;
         ratiotextView.setText(userRate);
 
-        return rootView;
+        rate = 0;
+        guessDataBaseHelper.getGuessList().clear();
+    }
+
+    private void findViews() {
+        androidguessView = rootView.findViewById(R.id.app_guess_imageview);
+        userGuessView = rootView.findViewById(R.id.user_guess_imageview);
+        resultTextview = rootView.findViewById(R.id.guess_result_textView);
+        ratiotextView = rootView.findViewById(R.id.guess_rate_textview);
     }
 
 }
