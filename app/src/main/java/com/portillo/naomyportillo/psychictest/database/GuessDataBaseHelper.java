@@ -71,7 +71,7 @@ public class GuessDataBaseHelper extends SQLiteOpenHelper {
                 do {
                     GuessModel guessModel = new GuessModel(
                             cursor.getInt(cursor.getColumnIndex("success")),
-                            cursor.getInt(cursor.getColumnIndex("failure")));
+                            cursor.getInt(cursor.getColumnIndex("failed")));
 
                     guessList.add(guessModel);
 

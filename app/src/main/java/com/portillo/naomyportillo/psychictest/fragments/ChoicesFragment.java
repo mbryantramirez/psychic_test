@@ -51,8 +51,8 @@ public class ChoicesFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        guessDataBaseHelper.getInstance(Objects
-                .requireNonNull(getActivity()).getApplicationContext());
+         guessDataBaseHelper = GuessDataBaseHelper.getInstance(getContext());
+
 
         if (getArguments() != null) {
             fragmentTheme = getArguments().getString(THEME);
@@ -129,7 +129,7 @@ public class ChoicesFragment extends Fragment {
             startEndResultFragment(userGuess, android, getString(R.string.guess_wrong));
         }
 
-        if(userGuess != android){
+        if (userGuess != android) {
             success = 0;
             fail = 1;
 

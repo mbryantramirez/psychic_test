@@ -3,6 +3,7 @@ package com.portillo.naomyportillo.psychictest.fragments;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -50,8 +51,8 @@ public class EndResultFragment extends Fragment {
         super.onCreate(savedInstanceState);
 
 
-        guessDataBaseHelper.getInstance(Objects
-                .requireNonNull(getActivity()).getApplicationContext());
+        guessDataBaseHelper = GuessDataBaseHelper.getInstance(getContext());
+
 
         getRatio();
 
@@ -71,6 +72,9 @@ public class EndResultFragment extends Fragment {
         int failedAttempts = 0;
 
         List<GuessModel> databaseGuesses = guessDataBaseHelper.getGuessList();
+
+        Log.d(".EndResultFrag _ numm", "guessList: " + String.valueOf(databaseGuesses.size()));
+
         int guesses = databaseGuesses.size();
         for (int i = 0; i < databaseGuesses.size(); i++) {
             if (databaseGuesses.get(i).getSuccess() == 0) {

@@ -29,7 +29,6 @@ public class MainFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        GuessDataBaseHelper guessDataBaseHelper = GuessDataBaseHelper.getInstance(getContext());
 
     }
 
