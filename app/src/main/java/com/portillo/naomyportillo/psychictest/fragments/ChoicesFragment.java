@@ -34,7 +34,6 @@ public class ChoicesFragment extends Fragment {
     private ImageView secondImg;
     private ImageView thirdImg;
     private ImageView fourthImg;
-    private Random rand;
     private int androidGuess;
     private GuessDataBaseHelper guessDataBaseHelper;
 
@@ -51,8 +50,7 @@ public class ChoicesFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-         guessDataBaseHelper = GuessDataBaseHelper.getInstance(getContext());
-
+        guessDataBaseHelper = GuessDataBaseHelper.getInstance(getContext());
 
         if (getArguments() != null) {
             fragmentTheme = getArguments().getString(THEME);
@@ -62,7 +60,7 @@ public class ChoicesFragment extends Fragment {
     }
 
     public void androidGuesses() {
-        rand = new Random();
+        Random rand = new Random();
         androidGuess = rand.nextInt(images.size());
     }
 
@@ -98,11 +96,7 @@ public class ChoicesFragment extends Fragment {
             public void onClick(View v) {
 
                 int userGuess = (int) imgView.getTag();
-
-                Log.d(".choicesfrag _ numm", "user: " + String.valueOf(userGuess));
                 int android = images.get(androidGuess);
-                Log.d(".choicesfrag _ numm", "android: " + String.valueOf(android));
-
                 verifyChoice(userGuess, android);
             }
         });
@@ -113,26 +107,14 @@ public class ChoicesFragment extends Fragment {
         int success = 0;
         int fail = 0;
 
-        Log.d(".choicesfrag - numm", "Check entry " + userGuess + " " + android);
-        Log.d(".choicesfrag - numm", "Check attempts " + success + " " + fail);
-
-
         if (userGuess == android) {
-            fail = 0;
             success = 1;
-
-            Log.d(".choicesfrag - numm", "Check entry " + userGuess + " " + android);
-            Log.d(".choicesfrag - numm", "Check attempts " + success + " " + fail);
 
             guessDataBaseHelper.addGuess(new GuessModel(success, fail));
             startEndResultFragment(userGuess, android, getString(R.string.guess_right));
         }
-
         if (userGuess != android) {
-            success = 0;
             fail = 1;
-
-            Log.d(".choicesfrag - numm", "Check entry " + userGuess + " " + android);
 
             guessDataBaseHelper.addGuess(new GuessModel(success, fail));
             startEndResultFragment(userGuess, android, getString(R.string.guess_wrong));
@@ -144,6 +126,9 @@ public class ChoicesFragment extends Fragment {
         FragmentManager fragManager = getActivity().getSupportFragmentManager();
 
         FragmentTransaction fragmentTransaction = fragManager.beginTransaction();
+
+        fragmentTransaction.setCustomAnimations(R.anim.enter, R.anim.exit, R.anim.pop_enter, R.anim.pop_exit);
+
         fragmentTransaction.replace(R.id.fragment_container, endResultFragment);
         fragmentTransaction.addToBackStack("result");
         fragmentTransaction.commit();

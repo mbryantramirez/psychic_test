@@ -15,6 +15,7 @@
             android:id="@+id/guess_result_textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
             android:layout_gravity="center"
             android:fontFamily="@font/lobster"
             android:text="@string/guess_right"
@@ -25,9 +26,11 @@
             android:id="@+id/app_guess_textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+
             android:layout_gravity="center"
             android:fontFamily="@font/lobster"
-            android:text="Psychic's guess"
+            android:text="@string/psychic_s_guess_textview"
             android:textSize="18sp" />
 
         <ImageView
@@ -35,15 +38,18 @@
             android:layout_gravity="center"
             android:layout_width="200dp"
             android:layout_height="200dp"
+            android:layout_marginTop="10dp"
+
             android:foregroundGravity="center"/>
 
         <TextView
             android:id="@+id/your_guess_textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
             android:layout_gravity="center"
             android:fontFamily="@font/lobster"
-            android:text="Your guess"
+            android:text="@string/your_guess_textview"
             android:textSize="18sp" />
 
         <ImageView
@@ -51,16 +57,47 @@
             android:layout_gravity="center"
             android:foregroundGravity="center"
             android:layout_width="200dp"
-            android:layout_height="200dp" />
+            android:layout_height="200dp"
+            android:layout_marginTop="10dp" />
 
         <TextView
             android:id="@+id/guess_rate_textview"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
             android:layout_gravity="center"
             android:fontFamily="@font/lobster"
             android:text="@string/your_successful_guess_rate_textview"
-            android:textSize="18sp" />
+            android:textSize="18sp"
+            android:textColor="@color/colorAccent"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="center">
+        <Button
+            android:id="@+id/endfragment_play_againbutton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_gravity="center"
+            android:fontFamily="@font/lobster"
+            android:backgroundTint="@android:color/holo_blue_dark"
+            android:textColor="@android:color/white"
+            android:text="try again" />
+
+            <Button
+                android:id="@+id/endfragment_resetbutton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_gravity="center"
+                android:fontFamily="@font/lobster"
+                android:backgroundTint="@android:color/holo_blue_dark"
+                android:textColor="@android:color/white"
+                android:text="@string/reset_button" />
+        </LinearLayout>
 
     </LinearLayout>
 

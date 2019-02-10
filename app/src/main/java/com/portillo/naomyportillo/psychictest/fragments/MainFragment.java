@@ -49,6 +49,9 @@ public class MainFragment extends Fragment {
                 FragmentManager fragManager = getActivity().getSupportFragmentManager();
 
                 FragmentTransaction fragmentTransaction = fragManager.beginTransaction();
+
+                fragmentTransaction.setCustomAnimations(R.anim.enter, R.anim.exit, R.anim.pop_enter, R.anim.pop_exit);
+
                 fragmentTransaction.replace(R.id.fragment_container, choicesFragment);
                 fragmentTransaction.addToBackStack("choices");
                 fragmentTransaction.commit();

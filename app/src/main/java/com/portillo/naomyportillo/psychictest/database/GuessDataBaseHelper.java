@@ -50,7 +50,7 @@ public class GuessDataBaseHelper extends SQLiteOpenHelper {
                 "SELECT * FROM " + TABLE_NAME + " WHERE success = '" + guess.getSuccess() +
                         "' AND failed = '" + guess.getFails() + "';", null);
 
-        if (cursor.getCount() == 0) {
+        if (cursor.getCount() != 0 || cursor.getCount() == 0) {
             getWritableDatabase().execSQL("INSERT INTO " + TABLE_NAME +
                     "(success, failed) VALUES('" +
                     guess.getSuccess() + "', '" +
@@ -80,6 +80,15 @@ public class GuessDataBaseHelper extends SQLiteOpenHelper {
             cursor.close();
         }
         return guessList;
+    }
+
+    public void clearGuessList() {
+
+            SQLiteDatabase db = this.getWritableDatabase();
+            db.delete(TABLE_NAME,null,null);
+            db.execSQL("delete from " + TABLE_NAME);
+            db.close();
+
     }
 }
 

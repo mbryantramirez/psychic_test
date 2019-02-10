@@ -5,9 +5,12 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="choose_a_theme_textview">Choose a theme</string>
     <string name="main_button_text">pick theme</string>
-    <string name="your_successful_guess_rate_textview">Your successful guess rate: </string>
+    <string name="your_successful_guess_rate_textview">Success Rate: </string>
     <string name="guess_right">You guessed right!</string>
     <string name="guess_wrong">You guessed wrong!</string>
+    <string name="your_guess_textview">Your guess</string>
+    <string name="psychic_s_guess_textview">Psychic\'s guess</string>
+    <string name="reset_button">reset</string>
 
 
     <string-array name="choices_array">
